@@ -1,7 +1,7 @@
 # VirtualMemory
 Virtual Memory Manager Project
 
-Group Members:
+Group Members:  
   Michael Li  
   David Williamhaven  
   Andrew Ta
