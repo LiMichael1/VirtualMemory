@@ -67,11 +67,23 @@ return page index
 
 ****************************************************/
 
+Word Address::displacement() {
+	return this->_value & 255;
+}
+
+
+/*************************************************
+return location in physical memory
+
+
+*************************************************/
 
 
 Word Address::frame() {
-	return this->_value & 255;
+	
 }
+ 
+
 
 /****************************************************
 bit mask 1111 1111 0000 0000 = 65280
@@ -87,9 +99,27 @@ Word Address::page() {
 
 class MemoryManagementUnit
 {
-	private:
 	public:
 		void clearTLB();
+		MemoryManagementUnit& instance();
+		MemoryManagementUnit();
+		MemoryManagementUnit& operator =();
+		void pageAccess();
+		void pageFaults();
+		//void read<T>();
+		void tlbAccess();
+		void tblFaults();
+
+	private:
+		MemoryManagementUnit();
+		int page_access_count_;
+
+
+		struct PageFault
+		{
+			PageFault();
+			Word pagenumber_;
+		};
 
 };
 
