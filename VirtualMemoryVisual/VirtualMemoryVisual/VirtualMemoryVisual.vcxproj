@@ -115,7 +115,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\hardware.cpp" />
+    <ClInclude Include="..\..\Main.cpp" />
+    <ClInclude Include="Address_.h" />
+    <ClInclude Include="MemoryManagementUnit.h" />
+    <ClInclude Include="PageTable.h" />
+    <ClInclude Include="Ram.h" />
+    <ClInclude Include="Word_.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Address_.cpp" />
+    <ClCompile Include="MemoryManagementUnit.cpp" />
+    <ClCompile Include="PageTable.cpp" />
+    <ClCompile Include="Ram.cpp" />
+    <ClCompile Include="Word_.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
