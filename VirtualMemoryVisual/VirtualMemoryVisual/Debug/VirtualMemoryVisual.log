@@ -1,0 +1,13 @@
+﻿  Address_.cpp
+  MemoryManagementUnit.cpp
+C:\Users\handb\Desktop\CPSC Projects\VirtualMemory\VirtualMemoryVisual\VirtualMemoryVisual\MemoryManagementUnit.h(16): error C2535: 'MemoryManagementUnit::MemoryManagementUnit(void)': member function already defined or declared
+  C:\Users\handb\Desktop\CPSC Projects\VirtualMemory\VirtualMemoryVisual\VirtualMemoryVisual\MemoryManagementUnit.h(11): note: see declaration of 'MemoryManagementUnit::MemoryManagementUnit'
+C:\Users\handb\Desktop\CPSC Projects\VirtualMemory\VirtualMemoryVisual\VirtualMemoryVisual\MemoryManagementUnit.h(25): error C2535: 'MemoryManagementUnit::MemoryManagementUnit(void)': member function already defined or declared
+  C:\Users\handb\Desktop\CPSC Projects\VirtualMemory\VirtualMemoryVisual\VirtualMemoryVisual\MemoryManagementUnit.h(11): note: see declaration of 'MemoryManagementUnit::MemoryManagementUnit'
+  PageTable.cpp
+  Ram.cpp
+C:\Users\handb\Desktop\CPSC Projects\VirtualMemory\VirtualMemoryVisual\VirtualMemoryVisual\Ram.h(27): error C2533: 'Ram': constructors not allowed a return type
+C:\Users\handb\Desktop\CPSC Projects\VirtualMemory\VirtualMemoryVisual\VirtualMemoryVisual\Ram.cpp(7): error C2275: 'Ram': illegal use of this type as an expression
+  Word_.cpp
+  Generating Code...
+C:\Users\handb\Desktop\CPSC Projects\VirtualMemory\VirtualMemoryVisual\VirtualMemoryVisual\Address_.cpp(29): error C4716: 'Address_::frame': must return a value
