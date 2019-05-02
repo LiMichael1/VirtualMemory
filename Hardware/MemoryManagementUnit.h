@@ -19,16 +19,20 @@ public:
 	void pageFaults();
 	//void read<T>();
 	void tlbAccess();
-	void tblFaults();
+	void tlbFaults();
 
 private:
 	MemoryManagementUnit();
-	int page_access_count_;
+	unsigned int page_access_count_;
+	unsigned int page_faults_;
+	unsigned int tlb_access_count_;
+	unsigned int tlb_faults_;
+	
 
 	struct PageFault
 	{
 		PageFault();
 		Word_ pagenumber_;
-	};
+	} pageF;
 };
 
