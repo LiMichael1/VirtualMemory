@@ -5,6 +5,11 @@ Word_ Address_::address()
 	return this->_value;
 }
 
+void Address::address(Word_& w)
+{
+
+}
+
 /****************************************************
 bit mask 0000 0000 1111 1111  = 255
 
@@ -26,6 +31,7 @@ Use Page # to get the Frame #
 Word_ Address_::frame() {
 	//PageTable p(this.page());
 	//p.Frame();
+	
 }
 
 
@@ -41,3 +47,4 @@ return page number
 Word_ Address_::page() {
 	return (this->_value & 65280) >> 8;
 }
+

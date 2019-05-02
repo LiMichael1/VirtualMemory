@@ -9,6 +9,8 @@ public:
 	bool dirty;
 };
 
+
+
 class Ram
 {
 	public:
@@ -23,6 +25,9 @@ class Ram
 
 		//stores metadata on page
 		Status status[256];
+		Frame frames[256];
+
+		
 	private:
 		void Ram();
 	

@@ -14,10 +14,11 @@ public:
 	void clearTLB();
 	MemoryManagementUnit& instance();
 	MemoryManagementUnit();
-	MemoryManagementUnit& operator =(MemoryManagementUnit bob);
+	MemoryManagementUnit& operator =(MemoryManagementUnit);
 	void pageAccess();
 	void pageFaults();
-	//void read<T>();
+	template<T>
+		void read(T&);
 	void tlbAccess();
 	void tlbFaults();
 
