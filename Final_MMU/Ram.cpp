@@ -15,7 +15,7 @@ Ram & Ram::instance()
 {
     return *this;
 }
-
+/****************************
 Ram Ram::operator=(Page p)
 {
     return Ram();
@@ -25,8 +25,10 @@ Ram Ram::operator=(Frame f)
 {
     return Ram();
 }
+******************************/
 
-void Ram::read(std::ifstream IT)
+template<typename T>
+void Ram::readRam(Address physical, T& data)
 {
 }
 

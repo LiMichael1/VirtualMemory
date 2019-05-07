@@ -11,12 +11,13 @@ PageTable::~PageTable()
 {
 }
 
-Word PageTable::getFrame(Address p)
+Page PageTable::getFrame(Address p)
 {
-    return frameNum[ p.page().uint32() ];
+	pageList[p.page().uint32()].accessCount++;
+    return pageList[ p.page().uint32()];
 }
 
-void PageTable::setFrame(int y, Word x)
+void PageTable::setFrame(Word pageP, Word frameF)
 {
-    frameNum[y] = x;
+	pageList[pageP.uint32()].frameNum = frameF;
 }

@@ -13,12 +13,14 @@ Address::~Address()
 
 Word Address::address()
 {
-    return Word();
+	Word addr;
+	addr.uint32(this->uint32());
+    return addr;
 }
 
 void Address::address(int x)
 {
-    uint32(x);
+    this->uint32(x);
 }
 
 /**********************************************
@@ -38,10 +40,13 @@ Word Address::displacement()
   shift page # left 8 bits
   add low 8 bits (aka index)
   do not change page#
+shift page index to high
+mask disp to clean
+add page and disp
 **********************************************/
-void Address::displacement(int x)
+void Address::displacement(int disp)
 {
-    uint32((page().uint32() << 8 )+(x&255));
+    this->uint32((this->page().uint32() << 8 )+(disp&255));
 }
 
 Word Address::frame()

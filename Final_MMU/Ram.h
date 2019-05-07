@@ -11,6 +11,12 @@ struct Status
     bool dirty = false;
 };
 
+struct Mem
+{
+	Status Stat;
+	Frame data;
+};
+
 class Ram
 {
 public:
@@ -19,16 +25,14 @@ public:
 
     Ram& instance();
 
-    Ram operator =(Page p); 
-    Ram operator =(Frame f);
+    //Ram operator =(Page p); 
+    //Ram operator =(Frame f);
 
-    void read(std::ifstream IT);
+	template<typename T>
+    void read(Address physical, T& data);
 
 
-    std::vector<Status, Frame> status[256];
-
-    Frame Memory[256];
-    
+    std::vector<Mem> status[256];
 
 private:
         void Ram_(Address x, Page p);

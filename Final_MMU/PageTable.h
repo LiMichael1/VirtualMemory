@@ -1,14 +1,16 @@
 #pragma once
 #include "Word.h"
 #include "Address.h"
-struct PageTable
+#include "Page.h"
+struct PageTable //aka Process Control Block
 {
 public:
     PageTable();
     ~PageTable();
 
-    Word frameNum[256];
-    Word getFrame(Address p);
-    void setFrame(int y, Word x);
+	Page pageList[256];
+
+    Page getFrame(Address p);
+    void setFrame(Word pageP, Word frameF);
 };
 
