@@ -1,35 +1,42 @@
 #pragma 
-
 #include <fstream>
+#include "Frame.h"
+#include "Page.h"
+#include <vector>
+#include "Address.h"
 
 struct Status
 {
-public:
-	bool accessed;
-	bool dirty;
+    bool accessed ;
+    bool dirty;
+    Status(){
+        accessed= false;
+        dirty = false;
+    }
 };
 
-
+struct Mem
+{
+    Status stat;
+    Frame data;
+};
 
 class Ram
 {
-	public:
-		Ram& instance();
-		Ram();
-		~Ram();
+public:
+    Ram();
 
-		Ram operator =(Ram Var2);
+    template<typename T>
+        void read(Address physical , T& data);
 
-		
-		void read(std::ifstream IT);
 
-		//stores metadata on page
-		Status status[256];
-		Frame frames[256];
+    std::vector<Mem> Memory[128];
 
-		
-	private:
-		void Ram();
-	
+    
+    
+
+private:
+        void Ram(Address x, Page p);
+
 };
 

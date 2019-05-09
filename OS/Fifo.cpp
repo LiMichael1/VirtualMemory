@@ -1,0 +1,6 @@
+class FIFO : public PRA
+{
+
+
+
+};

@@ -1,18 +1,26 @@
+
 #include "PageTable.h"
 
 
 
 PageTable::PageTable()
 {
-	for( int i = 0 ; i < 256 ; i ++)
+	access_count = 0;
+	for (int i =0 ; i < 256; i++)
 	{
-		pageTable[i].valid = false;
-		pageTables[i].frameNumber = 
+		pagetable[i].frameNUm = 0; 
+		pagetable[i].valid = false;
 	}
 }
 
+Word PageTable::getFrame(Address p)
+{
+	pageList(p.page().uint32()).access_count++;
+    return frameNum[ p.page().uint32() ];
+}
 
-PageTable::~PageTable()
+void PageTable::setFrame(int pt_index, Word data)
 {
 
+    pt[pt_index] = data;
 }

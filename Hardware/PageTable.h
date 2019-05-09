@@ -1,25 +1,23 @@
 #pragma once
-#include "Ram.h"
+#include "Word.h"
+#include "Address.h"
+
+struct Page
+{
+	unsigned int frameNumber;
+	bool valid; 
+};
+
 class PageTable
 {
 public:
-	PageTable();
-	~PageTable();
+    PageTable();
+    ~PageTable();
 
-private: 
-	PageTableEntry pageTable[256];
-	unsigned access_count;
-	//maybe a queue
-};
+   	Page pt[256];
+    Word getFrame(Address p);
 
-struct PageTableEntry
-{
+    unsigned int access_count;
 
-	unsigned int frameNumber;
-	bool valid;
-}
-
-struct Frame
-{
-	char bytes [256];
+    //keep count
 };

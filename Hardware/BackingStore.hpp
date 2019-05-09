@@ -1,12 +1,11 @@
 class BackingStore
 {
 public:
-	~BackingStore();
 	BackingStore();
-	BackingStore& instance();
-	BackingStore& operator=(BackingStore);
 	void read();
 private:
-	BackingStore();
-	basic_if_stream<char> media_;
+	BackingStore() = default;
+	basic_if_stream<char> media;
+	int length;
+	int offset;
 };	

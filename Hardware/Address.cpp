@@ -1,9 +1,9 @@
 #include "Address_.h"
 
 
-Word_ Address_::address()
+Word Address::address()
 {
-	return this->_value;
+	return this._value;
 }
 
 void Address::address(int& x)
@@ -18,14 +18,14 @@ return page index
 
 ****************************************************/
 
-Word_ Address::displacement() {
-    Word_ temp
+Word Address::displacement() {
+    Word temp;
     temp.value_ = this->value_ & 255;
     return temp;
 }
-void Address::displacement(Word_ & w)
+void Address::displacement(int x )
 {
-
+	this.uint32(this.page().unint() << 8) + (disp&255);
 }
 
 
@@ -35,14 +35,12 @@ Get Frame num from physical addr
 *************************************************/
 
 
-Word_ Address_::frame() {
-	Word_ temp ;
-	temp.value_ = (page().value_*256 )+ displacement().value_;
-	return Word;
+Word Address::frame(Page p) {
+    
 }
-void Address::frame(Word_ w)
+void Address::frame(int x)
 {
-	uint32_t physical = w.value_
+	
 }
 
 
@@ -55,12 +53,20 @@ shift right 8 times
 return page number
 
 ****************************************************/
-Word_ Address_::page() {
+Word Address::page() {
 	Word temp;
-	temp.value_ = (this->value_ >> 8) & 255;
+	temp.value_ = (this.value_ >> 8) & 255;
     return temp;
 }
-void Address::page()
-{
 
+	void Address::page(int x)
+{
+    x = x >> 8;
+    x = x & 255;
+    x = x << 8;
+
+    x += uint32() & 255;
+
+    this.uint32(x);
 }
+

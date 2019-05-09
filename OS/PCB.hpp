@@ -1,0 +1,4 @@
+class PCB
+{
+	PageTable mypageTable;
+};

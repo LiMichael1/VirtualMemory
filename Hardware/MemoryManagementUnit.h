@@ -3,37 +3,42 @@
 
 // "Word_.h"
 
-
+struct TLB 
+{
+	Page logical;
+	Frame Memory;
+}
 
 class MemoryManagementUnit
 {
 public:
 	MemoryManagementUnit();
-	~MemoryManagementUnit();
-
+	
 	void clearTLB();
-	MemoryManagementUnit& instance();
+	
 	MemoryManagementUnit();
-	MemoryManagementUnit& operator =(MemoryManagementUnit);
 	void pageAccess();
 	void pageFaults();
 	template<T>
-		void read(T&);
+		void read(Address, PageTable, T&);
 	void tlbAccess();
 	void tlbFaults();
 
 private:
-	MemoryManagementUnit();
+	
 	unsigned int page_access_count_;
 	unsigned int page_faults_;
 	unsigned int tlb_access_count_;
 	unsigned int tlb_faults_;
-	
+
+	TLB tlb[16];
 
 	struct PageFault
 	{
-		PageFault();
-		Word_ pagenumber_;
+		PageFault(Address);
+		Word pagenumber_;
 	} pageF;
+
+	
 };
 
