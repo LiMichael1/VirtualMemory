@@ -82,3 +82,13 @@ void Address::page(int x)
 
     uint32(x);
 }
+
+Address Address::operator>>(int x)
+{
+	return Address();
+}
+
+Address operator>>(cin ,int x)
+{
+	return std::cin();
+}

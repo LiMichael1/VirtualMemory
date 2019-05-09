@@ -6,6 +6,8 @@ public:
     Page();
     ~Page();
 
+
+
 	Word frameNum;
     char Pbytes[256];
 	bool valid = true;

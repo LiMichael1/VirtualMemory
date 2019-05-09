@@ -29,6 +29,8 @@ public:
 
     void tlbAccess();
     void tlbFaults();
+	template<typename T>
+	void read(PageTable PTable, Address& Logical, T data);
 
 private:
 
@@ -41,3 +43,9 @@ private:
     TLB tbl_;
 };
 
+template<typename T>
+inline void MemoryManagementUnit::read(PageTable PTable, Address & Logical, T data)
+{
+
+
+}

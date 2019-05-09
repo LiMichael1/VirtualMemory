@@ -28,7 +28,7 @@ Ram Ram::operator=(Frame f)
 ******************************/
 
 template<typename T>
-void Ram::readRam(Address physical, T& data)
+void Ram::read(Address &physical, T& data)
 {
 }
 

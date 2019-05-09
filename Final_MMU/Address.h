@@ -1,5 +1,12 @@
 #pragma once
 #include "Word.h"
+#include <iostream>
+#include <fstream>
+
+#define mHigh(x) (x & 0xFF00)
+#define mLow(x) (x & 0x00FF)
+#define mFrame(x) (x & 0x7F00)
+
 class Address : Word
 {
 public:
@@ -17,6 +24,12 @@ public:
 
     Word page();
     void page(int x);
+
+	Address operator >>(int x);
+
+
+	friend std::ifstream& operator >>(std::ifstream& fin, Address& x) {
+		fin >> x.value;
+	};
     
 };
-

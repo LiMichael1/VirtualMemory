@@ -8,17 +8,20 @@ PageTable::PageTable()
 	access_count = 0;
 	for (int i =0 ; i < 256; i++)
 	{
-		pagetable[i].frameNUm = 0; 
-		pagetable[i].valid = false;
+		pt[i].frameNUm = 0; 
+		pt[i].valid = false;
+		pt[i].access = 0;
 	}
 }
 
-Word PageTable::getFrame(Address p)
+Word PageTable::getFrame(Address logical)
 {
-	pageList(p.page().uint32()).access_count++;
-    return frameNum[ p.page().uint32() ];
+	pt(logical.page().uint32()).access_count++;
+    return this->pt[ p.page().uint32() ];
 }
 
+
+//data == framenum
 void PageTable::setFrame(int pt_index, Word data)
 {
 

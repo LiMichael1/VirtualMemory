@@ -29,7 +29,7 @@ public:
     //Ram operator =(Frame f);
 
 	template<typename T>
-    void read(Address physical, T& data);
+    void read(Address &physical, T& data);
 
 
     std::vector<Mem> status[256];

@@ -20,6 +20,7 @@ return page index
 
 Word Address::displacement() {
     Word temp;
+	temp.
     temp.value_ = this->value_ & 255;
     return temp;
 }
@@ -59,13 +60,13 @@ Word Address::page() {
     return temp;
 }
 
-	void Address::page(int x)
+void Address::page(int x)
 {
-    x = x >> 8;
-    x = x & 255;
-    x = x << 8;
+   
+    x = mHigh(x);
+    
 
-    x += uint32() & 255;
+    x += this->uint32() & 255;
 
     this.uint32(x);
 }

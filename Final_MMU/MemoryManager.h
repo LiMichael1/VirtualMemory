@@ -4,6 +4,7 @@ struct FreeFrameList
 {
 	FreeFrameList();
 	bool isFree[256];
+	bool* head;
 
 
 };
