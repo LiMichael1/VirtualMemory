@@ -10,7 +10,6 @@ public:
 
 	Page pageList[256];
 
-    Page getFrame(Address p);
     void setFrame(Word pageP, Word frameF);
 };
 

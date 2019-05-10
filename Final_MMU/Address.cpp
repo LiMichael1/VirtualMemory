@@ -9,8 +9,13 @@ Address::Address()
 
 Address::~Address()
 {
+	free(this);
 }
 
+/**********************************************
+return the value of the address as a wordd
+
+*********************************************/
 Word Address::address()
 {
 	Word addr;
@@ -18,9 +23,16 @@ Word Address::address()
     return addr;
 }
 
+/**************************************************
+void address(int x)
+
+takes in an int;
+set the address and mask the interger
+**********************************************************/
+
 void Address::address(int x)
 {
-    this->uint32(x);
+    this->value = mAddress(x);
 }
 
 /**********************************************
@@ -31,31 +43,38 @@ return word
 Word Address::displacement()
 {
     Word disp; // create word
-    disp.uint32(uint32() & 255); // initialize disp
+    disp.uint32(mLow(this->uint32())); // initialize disp
     return disp; // return word with disp;
 }
 
 /**********************************************
-  set displacemnt in Address object
-  shift page # left 8 bits
-  add low 8 bits (aka index)
-  do not change page#
-shift page index to high
-mask disp to clean
-add page and disp
+void displacement (int disp)
+
+get value of this object
+mask highbits
+
+mask disp get low bits
+
+add low & high
+
+set new value of this object 
+
 **********************************************/
 void Address::displacement(int disp)
 {
-    this->uint32((this->page().uint32() << 8 )+(disp&255));
+    this->uint32( mHigh(this->uint32())+ mLow(disp));
 }
 
 Word Address::frame()
 {
-    return Word();
+	Word frame;
+	frame.uint32(mFrame(this->uint32) >> 8);
+	return frame;
 }
 
 void Address::frame(int x)
 {
+	this->uint32(mFrame((x << 8)) + mLow(this->uint32()));
 }
 
 /**********************************************
@@ -68,27 +87,12 @@ return word
 Word Address::page()
 {
     Word page;
-    page.uint32((uint32() >> 8) & 255);
-    return Word();
+    page.uint32(mHigh(this->value) >> 8);
+    return page;
 }
 
 void Address::page(int x)
 {
-    x >> 8;
-    x & 255;
-    x << 8;
 
-    x += uint32() & 255;
-
-    uint32(x);
-}
-
-Address Address::operator>>(int x)
-{
-	return Address();
-}
-
-Address operator>>(cin ,int x)
-{
-	return std::cin();
+    uint32(mHigh(x) + mLow(this->uint32()));
 }

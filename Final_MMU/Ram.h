@@ -31,8 +31,7 @@ public:
 	template<typename T>
     void read(Address &physical, T& data);
 
-
-    std::vector<Mem> status[256];
+	Mem memory[256];
 
 private:
         void Ram_(Address x, Page p);

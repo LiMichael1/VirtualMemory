@@ -30,13 +30,6 @@ Ram Ram::operator=(Frame f)
 template<typename T>
 void Ram::read(Address &physical, T& data)
 {
+	data = this->memory[physical.frame().uint32()].data.Fbytes[physical.displacement()];
 }
 
-/******************************************************
-void ram_()
-set frame i with mapped page
-******************************************************/
-void Ram::Ram_(Address x, Page p)
-{
-    Memory[x.frame().uint32()].setFrame(p);
-}

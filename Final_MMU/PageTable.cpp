@@ -11,11 +11,7 @@ PageTable::~PageTable()
 {
 }
 
-Page PageTable::getFrame(Address p)
-{
-	pageList[p.page().uint32()].accessCount++;
-    return pageList[ p.page().uint32()];
-}
+
 
 void PageTable::setFrame(Word pageP, Word frameF)
 {

@@ -6,11 +6,8 @@ public:
     Page();
     ~Page();
 
-
-
 	Word frameNum;
-    char Pbytes[256];
-	bool valid = true;
-	unsigned int accessCount = 0;
+	bool valid = false;
+	unsigned int accessCount;
 };
 

@@ -11,7 +11,4 @@ Page::~Page()
 {
 }
 
-Page &Page::getPage()
-{
-    return *this;
-}
+

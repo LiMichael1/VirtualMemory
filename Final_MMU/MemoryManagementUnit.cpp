@@ -55,10 +55,23 @@ void MemoryManagementUnit::tlbFaults()
     tbl_faults_++;
 }
 
-void MemoryManagementUnit::MemoryManagementUnit_(Address logical, PageTable pages)
-{
-    Address physical;
-    pages[logical.page.uint32];
+
+void MemoryManagementUnit::read(PageTable PTable, Address& Logical) {
+	
+	for (TLB t : tlb_) {
+		if ( t.log.uint32() == Logical.page().uint32()) {
+			Logical.frame(t.Phys.uint32()); // match found, set physical address
+		}
+	}
+
+	if (PTable.pageList[Logical.page().uint32()].valid) { //valid
+		Logical.frame( PTable.pageList[Logical.page().uint32()].frameNum.uint32() ); // set physical address
+	}
+	else { // not valid
+		//throw PageFault ;
+	}
+	
+
 }
 
 ///////////////////////////////////////////////////////////////
