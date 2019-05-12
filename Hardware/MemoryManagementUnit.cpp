@@ -33,32 +33,35 @@ bool tlb_search(Address& logical)
 {
 	for(int i =0 ; i < 16; i ++)
 	{
-		if(TLB[i].logical._value == logical._value)
+		if(TLB[i].log.value == logical.value)
 			return true;
 	}
 	return false;
 }
 
-template<T>
-void MemoryManagementUnit::Read(Address& logical, PageTable& pt , T& data)
-{
-	Frame f;
-	if(tlb_search(logical))
-	{
-		f = TLB[logical.page()._value];
-		//ram read
-	}
-	else if ()
-	{
-		//check page Table for the logical addr
-		//Ram read
-	}
-	else
-	{
-		PageFault pf(logical);
-		throw pf;
-	}
-}
 
 //ram reading and adding the frame
 //add data for backing store 
+
+void MemoryManagementUnit::read(PageTable PTable, Address& Logical, unsigned char& data) {
+    
+    for (TLB t : tlb) {
+        if ( t.log.uint32() == Logical.page().uint32()) {
+            Logical.frame(t.Phys.uint32()); // match found, set physical address
+            ram.read(Logical, data);
+                           return;
+        }
+    }
+    tlb_faults++;
+
+    if (PTable.pageList[Logical.page().uint32()].valid) { //valid
+        Logical.frame( PTable.pageList[Logical.page().uint32()].frameNum.uint32() ); // set physical address
+        ram.read(Logical, data);
+    }
+
+    else { // not valid
+    	page_faults++;
+    	PageFault pf(logical);
+		throw pf;
+    }
+}

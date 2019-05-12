@@ -2,6 +2,11 @@
 
 struct Address_ : public Word
 {
+	Address();
+	Address(int x) : Word(x) {}
+
+	~Address();
+
 	Word address();
     void address(int x);
 
@@ -13,4 +18,8 @@ struct Address_ : public Word
 
     Word page();
 	void page(int x);
+
+	friend std::ifstream& operator >>(std::ifstream& fin, Address& x) {
+        fin >> x.value;
+    };
 };

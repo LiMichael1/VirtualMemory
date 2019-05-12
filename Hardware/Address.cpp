@@ -1,14 +1,25 @@
-#include "Address_.h"
+#include "Address.h"
+
+Address::Address()
+{
+    this->value = 0;
+}
+
+Address::~Address()
+{
+    free(this);
+}
 
 
 Word Address::address()
 {
-	return this._value;
+	return this->value;
 }
 
 void Address::address(int& x)
+Get Frame num from physical addr 
 {
-	this.uint32(x);
+	this->uint32(x);
 }
 
 /****************************************************
@@ -20,27 +31,30 @@ return page index
 
 Word Address::displacement() {
     Word temp;
-    temp.value_ = this->value_ & 255;
+    temp.value = this->value & 255;
     return temp;
 }
 void Address::displacement(int x )
 {
-	this.uint32(this.page().unint() << 8) + (disp&255);
+	this->uint32( (this->uint32() & 0xFF00) | (x&0x00FF));      
 }
 
 
 /*************************************************
-Get Frame num from physical addr 
+ bit mask 0111 1111 0000 0000 
 
+ return frame number
 *************************************************/
 
 
-Word Address::frame(Page p) {
-    
+Word Address::frame() {
+    Word temp;
+    temp.value = (this->value>>8) & 127;
+    return temp;
 }
 void Address::frame(int x)
 {
-	
+    this->uint32((x << 8) | (this->uint32() & ~0x7F00)) ;
 }
 
 
@@ -55,18 +69,12 @@ return page number
 ****************************************************/
 Word Address::page() {
 	Word temp;
-	temp.value_ = (this.value_ >> 8) & 255;
+	temp.value = (this->value >> 8) & 255;
     return temp;
 }
 
-	void Address::page(int x)
+void Address::page(int& x)
 {
-    x = x >> 8;
-    x = x & 255;
-    x = x << 8;
-
-    x += uint32() & 255;
-
-    this.uint32(x);
+    this->uint32((x << 8) | (this->uint32() & ~0xFF00))
 }
 

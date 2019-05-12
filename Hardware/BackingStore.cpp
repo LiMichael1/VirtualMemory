@@ -1,21 +1,25 @@
 #include "BackingStore.hpp"
 
 	
-void read(std::ifstream IT)
+void read(const Word& page , Frame& data)
 {
-	//read line - offset
-	//set RAM to that line
+	media.seekg(page.uint32() * 128);
+	media.read(data.Fbytes, sizeof(data.Fbytes));
 
 }
 
 BackingStore::BackingStore()
 {
-	media ("BackingStore.bin", std::ifstream::binary);
+	media ("BackingStore.bin", ios::binary);
 	if(media)
 	{
 		media.seekg (0, media.end);
     	length = is.tellg();
     	media.seekg (0, media.beg);
     	offset = 0;
+	}
+	else
+	{
+		std::cout << endl << "BackingStore.bin not in this file" <<endl;
 	}
 }

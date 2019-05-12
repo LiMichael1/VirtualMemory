@@ -5,7 +5,7 @@
 
 struct TLB 
 {
-	Page logical;
+	Page log;
 	Frame Memory;
 }
 
@@ -23,8 +23,6 @@ public:
 		void read(Address, PageTable, T&);
 	void tlbAccess();
 	void tlbFaults();
-
-private:
 	
 	unsigned int page_access_count_;
 	unsigned int page_faults_;
