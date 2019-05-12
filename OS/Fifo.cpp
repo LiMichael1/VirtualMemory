@@ -1,6 +1,0 @@
-class FIFO : public PRA
-{
-
-
-
-};

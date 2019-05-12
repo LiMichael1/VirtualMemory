@@ -5,13 +5,10 @@
 
 PageTable::PageTable()
 {
-	access_count = 0;
-	for (int i =0 ; i < 256; i++)
-	{
-		pagetable[i].frameNUm = 0; 
-		pagetable[i].valid = false;
-	}
+
 }
+
+
 
 Word PageTable::getFrame(Address p)
 {
@@ -22,5 +19,19 @@ Word PageTable::getFrame(Address p)
 void PageTable::setFrame(int pt_index, Word data)
 {
 
-    pt[pt_index] = data;
+    pageList[pt_index] = data;
+    
+}
+
+bool PageTable::SearchFrame(unsigned int frame, unsigned int& index)
+{
+	for (int i =0 ; i < 128 ; i ++)
+	{
+		if(pageList[i].frameNumber == frame && pageList[i].valid == true)
+		{
+			index = i;
+			return true;
+		}
+	}
+	return false;
 }
