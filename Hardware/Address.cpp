@@ -1,9 +1,6 @@
 #include "Address.h"
 
-Address::Address()
-{
-    this->value = 0;
-}
+
 
 Address::~Address()
 {
